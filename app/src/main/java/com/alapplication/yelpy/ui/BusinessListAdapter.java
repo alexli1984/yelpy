@@ -32,6 +32,7 @@ public class BusinessListAdapter extends IndexedRecyclerViewAdapter<IndexListIte
         ArrayList<IndexListItem<Business>> indexItemList = new ArrayList<>();
         String prevSection = "";
         int curSectionPos = 0;
+        IndexListItem<Business> prevHeader = null;
         for (Business curItem : businesses) {
             if (mGroupBy == SearchParam.GROUP_BY_NONE) {
                 indexItemList.add(new IndexListItem<>(null, curItem, -1));
@@ -40,15 +41,24 @@ public class BusinessListAdapter extends IndexedRecyclerViewAdapter<IndexListIte
                 if (!prevSection.equals(curSection)) {
                     // if not equal to pre_section, we add a header item
                     IndexListItem<Business> header = new IndexListItem<>(curItem, curSection);
+
+                    if (prevHeader != null) {
+                        prevHeader.setSectionCount(indexItemList.size() - curSectionPos - 1);
+                    }
+
                     // update the curSectionPos as the new header position
                     curSectionPos = indexItemList.size();
                     // the header's section position is itself's position
                     header.setSectionPos(curSectionPos);
                     indexItemList.add(header);
                     prevSection = curSection;
+                    prevHeader = header;
                 }
                 indexItemList.add(new IndexListItem<>(curSection, curItem, curSectionPos));
             }
+        }
+        if (prevHeader != null && prevHeader.getSectionCount() == 0) {
+            prevHeader.setSectionCount(indexItemList.size() - curSectionPos - 1);
         }
         updateIndexItemList(indexItemList);
     }
@@ -82,7 +92,8 @@ public class BusinessListAdapter extends IndexedRecyclerViewAdapter<IndexListIte
                 bindItemView(holder, position);
                 break;
             case TYPE_SECTION:
-                holder.categoryTitle.setText(getItemAt(position).getIndexFieldValue());
+                IndexListItem item = getItemAt(position);
+                holder.categoryTitle.setText(item.getIndexFieldValue() + " (" + item.getSectionCount() +")");
                 break;
         }
     }

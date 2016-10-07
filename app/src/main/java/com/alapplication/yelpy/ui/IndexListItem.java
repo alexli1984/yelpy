@@ -7,6 +7,7 @@ public class IndexListItem<T> {
     private T content;
     private String indexFieldValue;
     private int sectionPos;
+    private int sectionCount;
 
 
     public IndexListItem(String indexFieldValue, T content, int sectionPos) {
@@ -26,6 +27,14 @@ public class IndexListItem<T> {
 
     public void setContent(T content) {
         this.content = content;
+    }
+
+    public void setSectionCount(int count) {
+        sectionCount = count;
+    }
+
+    public int getSectionCount() {
+        return sectionCount;
     }
 
     public int getSectionPos() {

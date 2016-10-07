@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.alapplication.yelpy">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <application
+        android:name=".YelpyApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/yelp_android"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyC2tlBz-RqYmaGyxpg77QIlbCV_bhTnwqA" />
+
+        <activity
+            android:name=".ui.BusinessListActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:configChanges="screenSize|orientation">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.BusinessDetailActivity"
+            android:parentActivityName=".ui.BusinessListActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:configChanges="screenSize|orientation">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.alapplication.yelpy.ui.BusinessListActivity" />
+        </activity>
+    </application>
+
+</manifest>

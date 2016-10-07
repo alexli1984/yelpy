@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/thumbnail"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_business_placeholder"
+            android:layout_marginRight="12dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@android:style/TextAppearance.Material.Body2"
+                android:textSize="16sp"
+                tools:text="Restaurant Name Very Very Very Long" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <RatingBar
+                    android:id="@+id/rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:rating="4.5"
+                    style="@android:style/Widget.DeviceDefault.Light.RatingBar.Small" />
+
+                <TextView
+                    android:id="@+id/reviews"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="4dp"
+                    android:layout_height="wrap_content"
+                    style="@android:style/TextAppearance.Material.Body1"
+                    tools:text="265 Reviews" />
+
+                <TextView
+                    android:id="@+id/price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@android:style/TextAppearance.Material.Body1"
+                    android:textColor="@color/colorGreen"
+                    tools:text="$$$$" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@android:style/TextAppearance.Material.Body1"
+                android:layout_marginTop="2dp"
+                tools:text="Centrl Pky Way, Toronto" />
+
+            <TextView
+                android:id="@+id/categories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@android:style/TextAppearance.Material.Caption"
+                tools:text="Asian, Sushi" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_marginTop="4dp"
+        android:background="@color/mediumBackground"
+        android:layout_height="1dp"
+        android:layout_width="match_parent" />
+
+</LinearLayout>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="4dp"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/thumbnail"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/yelp_android"
+            android:scaleType="centerCrop"
+            android:layout_marginRight="12dp" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:gravity="center_vertical">
+
+                <RatingBar
+                    android:id="@+id/rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:rating="4.5"
+                    style="@android:style/Widget.DeviceDefault.Light.RatingBar.Small" />
+
+                <TextView
+                    android:id="@+id/time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    style="@android:style/TextAppearance.Material.Body2"
+                    android:textSize="12sp"
+                    tools:text="2016-08-12 08:55:29" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                tools:text="User"
+                style="@android:style/TextAppearance.Material.Body2" />
+
+            <TextView
+                android:id="@+id/summary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                style="@android:style/TextAppearance.Material.Body1"
+                tools:text="Test adfas adfads asdf asdf asdf asd asd fasd asd asdf" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:src="@drawable/ic_chevron_right_black_24dp"
+            android:layout_gravity="center_vertical"
+            android:tint="#aaa" />
+
+    </LinearLayout>
+
+    <include layout="@layout/divider" />
+
+</LinearLayout>

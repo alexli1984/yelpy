@@ -1,0 +1,58 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.2"
+    defaultConfig {
+        applicationId "com.alapplication.yelpy"
+        minSdkVersion 23
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        debug {
+            minifyEnabled false
+            buildConfigField "String", "YELP_CLIENT_ID", "\"MXfSw09bNxR7P9nfuV9Iaw\""
+            buildConfigField "String", "YELP_CLIENT_SECRET", "\"CDPbfJj8gKcj6pHiVvbvdnuwI5BUjnY1u66a3CNjTISzdfQREuzU7w3qpcQ7uDII\""
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        release.initWith(buildTypes.debug)
+        release {
+            minifyEnabled true
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    compile 'com.android.support:appcompat-v7:24.2.1'
+    compile 'com.android.support:support-v4:24.2.1'
+    compile 'com.android.support:design:24.2.1'
+
+    //retrofit
+    compile 'com.squareup.retrofit2:converter-gson:2.0.2'
+    compile 'com.squareup.retrofit2:retrofit:2.0.2'
+    //gson
+    compile 'com.google.code.gson:gson:2.4'
+    //event bus for async event handling
+    compile 'de.greenrobot:eventbus:2.4.0'
+    //image loader
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    //display map and obtain location
+    compile 'com.google.android.gms:play-services-maps:9.6.1'
+    compile 'com.google.android.gms:play-services-location:9.6.1'
+
+    compile 'com.android.support:recyclerview-v7:24.2.1'
+    testCompile 'junit:junit:4.12'
+}

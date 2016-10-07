@@ -1,0 +1,259 @@
+<layout>
+
+    <data class="com.alapplication.yelpy.ui.binding.BusinessDetailBinding">
+
+        <variable
+            name="business"
+            type="com.alapplication.yelpy.api.model.Business" />
+
+        <variable
+            name="context"
+            type="com.alapplication.yelpy.ui.BusinessDetailFragment" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/business_detail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.alapplication.yelpy.ui.BusinessDetailFragment"
+        android:orientation="vertical"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <RatingBar
+                    android:id="@+id/rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:rating="@{business.rating}"
+                    tools:rating="4.5"
+                    style="@android:style/Widget.DeviceDefault.Light.RatingBar.Small" />
+
+                <TextView
+                    android:id="@+id/reviews"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="4dp"
+                    android:layout_height="wrap_content"
+                    style="@android:style/TextAppearance.Material.Body1"
+                    android:text="@{@plurals/reviews(business.review_count, business.review_count)}" />
+
+                <TextView
+                    android:id="@+id/price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@android:style/TextAppearance.Material.Body1"
+                    android:text="@{business.price}" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/categories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@android:style/TextAppearance.Material.Body1"
+                android:text="@{business.categorySummary}" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/hours"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    style="@android:style/TextAppearance.Material.Body1" />
+
+                <TextView
+                    android:id="@+id/open"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@android:style/TextAppearance.Material.Body1"
+                    android:textColor="@{business.openNow ? @color/colorGreen : @color/colorPrimary}"
+                    android:visibility="@{business.hours == null ? View.INVISIBLE : View.VISIBLE}"
+                    android:text="@{business.openNow ? @string/open : @string/closed}" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <include layout="@layout/divider" />
+
+        <com.google.android.gms.maps.MapView
+            android:id="@+id/map_view"
+            android:layout_width="match_parent"
+            android:layout_height="120dp" />
+
+        <include layout="@layout/divider" />
+
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@android:style/TextAppearance.Material.Body1"
+            android:padding="8dp"
+            android:gravity="center"
+            android:text="@{business.location.longForm}" />
+
+        <include layout="@layout/divider" />
+
+        <LinearLayout
+            android:id="@+id/direction_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:gravity="center"
+            android:background="?attr/selectableItemBackground"
+            android:onClick="@{() -> context.getDirection()}"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_directions_black_24dp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                style="@android:style/TextAppearance.Material.Body2"
+                android:layout_weight="1"
+                android:layout_marginLeft="12dp"
+                android:text="@string/get_direction" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:tint="#aaa"
+                android:src="@drawable/ic_chevron_right_black_24dp" />
+        </LinearLayout>
+
+        <include layout="@layout/divider" />
+
+        <LinearLayout
+            android:id="@+id/call_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:gravity="center"
+            android:background="?attr/selectableItemBackground"
+            android:onClick="@{() -> context.callBusiness()}"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_call_black_24dp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                style="@android:style/TextAppearance.Material.Body2"
+                android:layout_weight="1"
+                android:layout_marginLeft="12dp"
+                android:text="@{@string/call(business.formattedPhone)}" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:tint="#aaa"
+                android:src="@drawable/ic_chevron_right_black_24dp" />
+        </LinearLayout>
+
+        <include layout="@layout/divider" />
+
+        <LinearLayout
+            android:id="@+id/website_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:gravity="center"
+            android:background="?attr/selectableItemBackground"
+            android:onClick="@{() -> context.visitWebsite()}"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_open_in_new_black_24dp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                style="@android:style/TextAppearance.Material.Body2"
+                android:layout_weight="1"
+                android:layout_marginLeft="12dp"
+                android:text="@string/visit_website" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_chevron_right_black_24dp"
+                android:tint="#aaa" />
+        </LinearLayout>
+
+        <include layout="@layout/divider" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@android:style/TextAppearance.Material.Title"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/photos" />
+
+        <HorizontalScrollView
+            android:id="@+id/photo_container"
+            android:visibility="gone"
+            android:scrollbars="none"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp">
+
+            <LinearLayout
+                android:id="@+id/photo_scroller"
+                android:layout_width="wrap_content"
+                android:layout_height="120dp"
+                android:orientation="horizontal">
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+        <include layout="@layout/divider" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@android:style/TextAppearance.Material.Title"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/review_highlights" />
+
+        <include layout="@layout/divider" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/review_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</layout>

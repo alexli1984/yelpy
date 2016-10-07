@@ -1,0 +1,87 @@
+<resources>
+    <string name="app_name">Yelpy</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="photos">Photos</string>
+
+    <plurals name="reviews">
+        <item quantity="zero">%1$d Review</item>
+        <item quantity="one">%1$d Review</item>
+        <item quantity="other">%1$d Reviews</item>
+    </plurals>
+
+    <plurals name="minute">
+        <item quantity="one">minute</item>
+        <item quantity="other">minutes</item>
+    </plurals>
+
+    <plurals name="hour">
+        <item quantity="one">hour</item>
+        <item quantity="other">hours</item>
+    </plurals>
+
+    <plurals name="day">
+        <item quantity="one">day</item>
+        <item quantity="other">days</item>
+    </plurals>
+
+    <plurals name="month">
+        <item quantity="one">month</item>
+        <item quantity="other">months</item>
+    </plurals>
+
+    <plurals name="year">
+        <item quantity="one">year</item>
+        <item quantity="other">years</item>
+    </plurals>
+
+    <string name="hours_unavailable">Unavailable</string>
+    <string name="hours_today">Hours Today: %1$s</string>
+
+    <string name="closed">Closed</string>
+    <string name="open">Open</string>
+    <string name="review_highlights">Review Highlights</string>
+    <string name="get_direction">Get Direction</string>
+    <string name="call">Call %1$s</string>
+    <string name="visit_website">Visit Website</string>
+    <string name="time_just_now">Just Now</string>
+    <string name="time_ago">%1$d %2$s ago</string>
+    <string name="search">Search</string>
+    <string name="filters">Filters</string>
+    <string name="sort_by">Sort By</string>
+    <string name="cancel">Cancel</string>
+    <string name="general_features">General Features</string>
+    <string name="open_now">Open Now</string>
+    <string name="take_out">Take-out</string>
+    <string name="offering_a_deal">Offering a Deal</string>
+    <string name="delivery">Delivery</string>
+    <string name="use_current">Use Current</string>
+    <string name="location">Location</string>
+    <string name="location_hint">e.g. Toronto</string>
+    <string name="hot_and_new"><![CDATA[Hot & New]]></string>
+    <string name="no_result">Oops, we couldn\'t find anything matching your search.\nTry again with something else:)</string>
+    <string name="group_by">Group By</string>
+
+    <string-array name="sort_by_array">
+        <item>Best Match</item>
+        <item>Rating</item>
+        <item>Review Count</item>
+        <item>Distance</item>
+    </string-array>
+
+    <string-array name="sort_by_value">
+        <item>best_match</item>
+        <item>rating</item>
+        <item>review_count</item>
+        <item>distance</item>
+    </string-array>
+
+    <string-array name="group_by_array">
+        <item>None</item>
+        <item>Category</item>
+        <item>Price</item>
+    </string-array>
+</resources>

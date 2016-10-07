@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data class="com.alapplication.yelpy.ui.FilterDialogBinding">
+
+        <variable
+            name="param"
+            type="com.alapplication.yelpy.api.model.SearchParam" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/filters"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginTop="24dp"
+            style="@android:style/TextAppearance.Material.Title" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/location"
+                    style="@android:style/TextAppearance.Material.Body2" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="bottom"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/location_edit"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="16sp"
+                        android:maxLines="1"
+                        android:textColorHint="@color/textHintColor"
+                        android:hint="@string/location_hint" />
+
+                    <CheckBox
+                        android:id="@+id/use_current_checkbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:textSize="16sp"
+                        android:text="@string/use_current" />
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/sort_by"
+                    style="@android:style/TextAppearance.Material.Body2" />
+
+                <Spinner
+                    android:id="@+id/sort_by_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:entries="@array/sort_by_array"></Spinner>
+
+                <include layout="@layout/divider" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/group_by"
+                    style="@android:style/TextAppearance.Material.Body2" />
+
+                <Spinner
+                    android:id="@+id/group_by_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:entries="@array/group_by_array"></Spinner>
+
+                <include layout="@layout/divider" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/general_features"
+                    style="@android:style/TextAppearance.Material.Body2" />
+
+                <Switch
+                    android:id="@+id/open_now_switch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/open_now" />
+
+                <include layout="@layout/divider" />
+
+                <Switch
+                    android:id="@+id/offer_deal_switch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/offering_a_deal" />
+
+                <include layout="@layout/divider" />
+
+                <Switch
+                    android:id="@+id/hot_new_switch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/hot_and_new" />
+
+                <include layout="@layout/divider" />
+
+            </LinearLayout>
+        </ScrollView>
+
+        <include layout="@layout/divider" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="24dp">
+
+            <Button
+                android:id="@+id/cancel_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:layout_toLeftOf="@+id/search_button"
+                android:textColor="@color/colorCyan"
+                android:text="@string/cancel" />
+
+            <Button
+                android:id="@+id/search_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:text="@string/search"
+                android:textColor="@color/colorCyan"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true" />
+
+        </RelativeLayout>
+    </LinearLayout>
+</layout>

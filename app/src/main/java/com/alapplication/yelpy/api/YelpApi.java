@@ -1,11 +1,9 @@
 package com.alapplication.yelpy.api;
 
-import com.alapplication.yelpy.BuildConfig;
 import com.alapplication.yelpy.api.model.Business;
 import com.alapplication.yelpy.api.model.Hours;
 import com.alapplication.yelpy.api.model.Review;
 import com.alapplication.yelpy.api.model.SearchParam;
-import com.alapplication.yelpy.api.model.Session;
 import com.alapplication.yelpy.network.ApiFactory;
 import com.alapplication.yelpy.network.YelpBaseRequest;
 import com.alapplication.yelpy.network.YelpBaseResponse;
@@ -17,28 +15,6 @@ import java.util.List;
  */
 public class YelpApi {
     private static YelpApiService apiService = ApiFactory.getInstance().getApiInstance(YelpApiService.class);
-
-    /**
-     * Authentication Request
-     */
-    public static class GetToken extends YelpBaseRequest<GetToken.Response> {
-        public GetToken() {
-            setApiCall(apiService.getToken("client_credentials", BuildConfig.YELP_CLIENT_ID, BuildConfig.YELP_CLIENT_SECRET));
-        }
-
-        public static class Response extends YelpBaseResponse {
-            public String access_token;
-            public String token_type;
-            public long expires_in;
-        }
-
-        @Override
-        public void onSuccess(retrofit2.Response response) {
-            super.onSuccess(response);
-            Session.getInstance().token = this.response.access_token;
-            Session.getInstance().expires = System.currentTimeMillis() + this.response.expires_in * 1000;
-        }
-    }
 
     /**
      * Search Request

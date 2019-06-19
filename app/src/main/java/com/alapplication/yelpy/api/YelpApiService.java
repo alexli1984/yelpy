@@ -1,10 +1,7 @@
 package com.alapplication.yelpy.api;
 
 import retrofit2.Call;
-import retrofit2.http.Field;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
-import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -12,13 +9,6 @@ import retrofit2.http.Query;
  * Yelp API Interface
  */
 public interface YelpApiService {
-    /**
-     * Authenticate against yelp api server with OAuth2
-     */
-    @FormUrlEncoded
-    @POST("oauth2/token")
-    Call<YelpApi.GetToken.Response> getToken(@Field("grant_type") String grantType, @Field("client_id") String clientId,
-                                             @Field("client_secret") String clientSecret);
 
     /**
      * @param term       Optional. Search term (e.g. "food", "restaurants")

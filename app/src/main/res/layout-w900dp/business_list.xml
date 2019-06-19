@@ -15,7 +15,7 @@
     
     -->
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/business_list"
         android:name="com.alapplication.yelpy.ui.BusinessListFragment"
         android:layout_width="0dp"

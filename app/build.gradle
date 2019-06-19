@@ -1,21 +1,20 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion "24.0.2"
+    compileSdkVersion 28
     defaultConfig {
         applicationId "com.alapplication.yelpy"
         minSdkVersion 23
-        targetSdkVersion 24
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         debug {
             minifyEnabled false
             buildConfigField "String", "YELP_CLIENT_ID", "\"MXfSw09bNxR7P9nfuV9Iaw\""
-            buildConfigField "String", "YELP_CLIENT_SECRET", "\"CDPbfJj8gKcj6pHiVvbvdnuwI5BUjnY1u66a3CNjTISzdfQREuzU7w3qpcQ7uDII\""
+            buildConfigField "String", "YELP_API_KEY", "\"6Wzumby1_09tdpf_FeVWhXB3oF7Ubhf1ea8GHOZmL5AtMmbiFeymbzAGlhGXH7QhP7IDZ4ENRyQedY5ISavbiCf1gsVk6VkWLAT5OoTc-Fy7ntMOmXs_fyUOclYfWnYx\""
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
 
@@ -31,28 +30,28 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-    compile 'com.android.support:appcompat-v7:24.2.1'
-    compile 'com.android.support:support-v4:24.2.1'
-    compile 'com.android.support:design:24.2.1'
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.android.material:material:1.0.0'
 
     //retrofit
-    compile 'com.squareup.retrofit2:converter-gson:2.0.2'
-    compile 'com.squareup.retrofit2:retrofit:2.0.2'
+    implementation 'com.squareup.retrofit2:converter-gson:2.0.2'
+    implementation 'com.squareup.retrofit2:retrofit:2.0.2'
     //gson
-    compile 'com.google.code.gson:gson:2.4'
+    implementation 'com.google.code.gson:gson:2.8.5'
     //event bus for async event handling
-    compile 'de.greenrobot:eventbus:2.4.0'
+    implementation 'de.greenrobot:eventbus:2.4.0'
     //image loader
-    compile 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
     //display map and obtain location
-    compile 'com.google.android.gms:play-services-maps:9.6.1'
-    compile 'com.google.android.gms:play-services-location:9.6.1'
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
 
-    compile 'com.android.support:recyclerview-v7:24.2.1'
-    testCompile 'junit:junit:4.12'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    testImplementation 'junit:junit:4.12'
 }

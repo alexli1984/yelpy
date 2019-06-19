@@ -1,6 +1,6 @@
 package com.alapplication.yelpy.network;
 
-import com.alapplication.yelpy.api.model.Session;
+import com.alapplication.yelpy.BuildConfig;
 import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
@@ -44,9 +44,7 @@ public class ApiFactory {
             public Response intercept(Chain chain) throws IOException {
                 Request request = chain.request();
                 Request.Builder requestBuilder = request.newBuilder();
-                if (Session.getInstance().token != null && !Session.getInstance().isExpired()) {
-                    requestBuilder.addHeader("Authorization", Session.getInstance().getTokenHeader());
-                }
+                requestBuilder.addHeader("Authorization", "Bearer " + BuildConfig.YELP_API_KEY);
                 return chain.proceed(requestBuilder.build());
             }
         });

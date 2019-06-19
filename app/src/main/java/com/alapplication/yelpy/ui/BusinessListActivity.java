@@ -4,25 +4,25 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.databinding.DataBindingUtil;
 import android.location.Location;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.NavigationView;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.SearchView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.view.GravityCompat;
+import androidx.databinding.DataBindingUtil;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.alapplication.yelpy.R;
 import com.alapplication.yelpy.api.YelpApi;
@@ -32,6 +32,7 @@ import com.alapplication.yelpy.api.model.SearchParam;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.Collections;
 
@@ -188,17 +189,13 @@ public class BusinessListActivity extends AppCompatActivity implements AbstractR
         return true;
     }
 
-    public void onEventMainThread(YelpApi.GetToken.Response response) {
-        if (response.isSuccess()) {
-            SearchParam.Builder builder = new SearchParam.Builder(mSearchParam);
-            if (!TextUtils.isEmpty(mSearchView.getQuery())) {
-                builder.term(mSearchView.getQuery().toString());
-            }
-            mSearchParam = builder.build();
-            searchBusiness();
-        } else {
-            Toast.makeText(this, response.status.errorMsg, Toast.LENGTH_SHORT).show();
+    private void initialSearch() {
+        SearchParam.Builder builder = new SearchParam.Builder(mSearchParam);
+        if (!TextUtils.isEmpty(mSearchView.getQuery())) {
+            builder.term(mSearchView.getQuery().toString());
         }
+        mSearchParam = builder.build();
+        searchBusiness();
     }
 
     public void onEventMainThread(YelpApi.Search.Response response) {
@@ -220,10 +217,6 @@ public class BusinessListActivity extends AppCompatActivity implements AbstractR
         } else {
             Toast.makeText(this, "Search Error", Toast.LENGTH_SHORT).show();
         }
-    }
-
-    private void authenticate() {
-        new YelpApi.GetToken().postRequestAsync();
     }
 
     private void searchBusiness() {
@@ -268,7 +261,7 @@ public class BusinessListActivity extends AppCompatActivity implements AbstractR
                     location(mLastLocation.getLatitude(), mLastLocation.getLongitude()).build();
         }
 
-        authenticate();
+        initialSearch();
     }
 
     @Override
@@ -283,17 +276,17 @@ public class BusinessListActivity extends AppCompatActivity implements AbstractR
                 mSearchParam = new SearchParam.Builder(mSearchParam).
                         location(mLastLocation.getLatitude(), mLastLocation.getLongitude()).build();
             }
-            authenticate();
+            initialSearch();
         }
     }
 
     @Override
     public void onConnectionSuspended(int i) {
-        authenticate();
+        initialSearch();
     }
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-        authenticate();
+        initialSearch();
     }
 }

@@ -1,7 +1,7 @@
 package com.alapplication.yelpy.api.model;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.telephony.PhoneNumberUtils;
 
 import com.alapplication.yelpy.R;
